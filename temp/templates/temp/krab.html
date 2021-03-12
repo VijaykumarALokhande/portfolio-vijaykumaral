@@ -2,7 +2,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-  {%load static%}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -55,8 +54,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-link" href="{%static 'Resume8.pdf'%}">Resume</a>
-            <a class="nav-link" href="#">Blogs</a>
+            <a class="nav-link" href="#">Resume</a>
+            <a class="nav-link active" href="#">Blogs</a>
             <a class="nav-link" href="#">LinkedIn</a>
           </div>
         </div>
@@ -65,40 +64,27 @@
   </header>
 
   <main>
-
-    <section class="py-5 text-center container">
-      <div class="row py-lg-5">
-        <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">Welcome, I am Vijaykumar A. L.</h1>
-          <p class="lead text-muted">Actively looking for an Internship. Bound to my ethics.</p>
-          <p>
-            <a href="mailto:vijaysaurabh1999@gmail.com" class="btn btn-primary my-2">Mail Me!</a>
-          </p>
-          <img src="{%static 'VIJAYKUMAR-LOKHANDE1.jpg'%}" height="200"/>
-        </div>
+    <h1 class="text-center pt-3">All Works</h1>
+    <div class="container">
+      <br/>
+      <br/>
+      <h3>Recent Works</h3>
+      <hr/>
+      {% for obj in b_objs.all %}
+      <a href="#"><h3>{{obj.topic}}</h3></a>
+      {{obj.custom_date}}
+      <br/>
+      <img class="img-fluid" src="{{obj.image.url}}"/>
+      <br/>
+      {{obj.summary}}
+      {%endfor%}
       </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-      <div class="container">
-
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          {%for job in listofjobs.all%}
-          <div class="col">
-            <div class="card shadow-sm">
-              <img class="card-img-top" src="{{job.image.url}}"/>
-              <div class="card-body">
-                <p class="card-text">{{job.summary}}</p>
-              </div>
-            </div>
-          </div>
-          {%endfor%}
-
-        </div>
-      </div>
-    </div>
-
   </main>
+
+
+
+
+
 
   <footer class="text-muted py-5">
     <div class="container, text-center">
